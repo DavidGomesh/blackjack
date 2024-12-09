@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.gomesh.Blackjack.model.hand.Hand;
+
 public class HandTest {
 
     @Test
@@ -60,6 +62,24 @@ public class HandTest {
         assertFalse(Hand.of(List.of(ACE_OF_CLUBS, ACE_OF_HEARTS, KING_OF_DIAMONDS)).isSoftHand());
         assertFalse(Hand.of(List.of(ACE_OF_CLUBS, JACK_OF_SPADES, KING_OF_DIAMONDS)).isSoftHand());
         assertFalse(Hand.of(List.of(ACE_OF_CLUBS, SEVEN_OF_CLUBS, KING_OF_DIAMONDS)).isSoftHand());
+    }
+
+    @Test
+    void isDoublable() {
+        assertFalse(Hand.of(List.of(ACE_OF_CLUBS)).isDoublable());
+        assertTrue (Hand.of(List.of(ACE_OF_CLUBS, TWO_OF_CLUBS)).isDoublable());
+        assertFalse(Hand.of(List.of(ACE_OF_CLUBS, TWO_OF_CLUBS, THREE_OF_CLUBS)).isDoublable());
+    }
+
+    @Test
+    void isSplittableHand() {
+        assertTrue(Hand.of(List.of(ACE_OF_CLUBS, ACE_OF_HEARTS)).isSplittableHand());
+        assertTrue(Hand.of(List.of(TEN_OF_DIAMONDS, TEN_OF_SPADES)).isSplittableHand());
+        assertTrue(Hand.of(List.of(TEN_OF_DIAMONDS, JACK_OF_CLUBS)).isSplittableHand());
+        
+        assertFalse(Hand.of(List.of(ACE_OF_HEARTS, TWO_OF_CLUBS)).isSplittableHand());
+        assertFalse(Hand.of(List.of(ACE_OF_HEARTS, ACE_OF_DIAMONDS, THREE_OF_CLUBS)).isSplittableHand());
+        assertFalse(Hand.of(List.of(TEN_OF_HEARTS, SEVEN_OF_CLUBS, THREE_OF_HEARTS)).isSplittableHand());
     }
 
     @Test

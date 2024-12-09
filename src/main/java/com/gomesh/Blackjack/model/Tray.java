@@ -14,6 +14,10 @@ public class Tray {
         return new Tray(new ArrayList<>());
     }
 
+    public Integer cardsAmount() {
+        return cards.size();
+    }
+
     public void addCard(Card card) {
         cards.add(card);
     }

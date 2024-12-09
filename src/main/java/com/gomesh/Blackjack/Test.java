@@ -1,10 +1,13 @@
 package com.gomesh.Blackjack;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.gomesh.Blackjack.model.Shoe;
-import com.gomesh.Blackjack.model.Tray;
+import com.gomesh.Blackjack.model.Card;
+import com.gomesh.Blackjack.model.Game;
+import com.gomesh.Blackjack.model.hand.Hand;
 
 @Component
 public class Test implements CommandLineRunner {
@@ -12,31 +15,22 @@ public class Test implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        var shoe = Shoe.of(1);
-        var tray = Tray.empty();
+        System.out.println("\n\n\n\n\n");
+
+        // var hand = Hand.empty();
+        // hand.addCard(Card.KING_OF_CLUBS);
+        // hand.addCard(Card.THREE_OF_CLUBS);
+        // hand.addCard(Card.THREE_OF_CLUBS);
+        // hand.addCard(Card.THREE_OF_CLUBS);
+        // hand.addCard(Card.THREE_OF_CLUBS);
         
-        shoe.shuffle();
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
-        tray.addCard(shoe.getOne());
+        var game = Game.newGame(8);
+
+        game.shuffle();
+        game.nextRound();
+        game.showGameDetails();
+
+        System.out.println("\n\n\n\n\n");
     }
     
 }

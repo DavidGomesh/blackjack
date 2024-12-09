@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Shoe {
-    
+
     private final List<Card> cards;
 
     public static Shoe of(Integer decksAmount) {
@@ -18,6 +18,10 @@ public class Shoe {
         }
 
         return new Shoe(cards);
+    }
+
+    public Integer cardsAmount() {
+        return cards.size();
     }
 
     public void shuffle() {
